@@ -1,0 +1,65 @@
+body {
+    background-color:#C4C4C4;
+}
+
+button {
+    padding:0;
+}
+
+.search-input {
+    border: 0;
+    padding: 0;
+    background-color: #ffffff;
+    width: 300px;
+    height: 40px;
+}
+
+
+
+.repos {
+    list-style-type: none;
+    padding:0;
+}
+
+.repo {
+    background: #E3E3E3;
+    text-decoration: none;
+    width: 300px;
+    height:30px;
+    border: 1px solid black;
+}
+
+.repo-name {
+    padding: 0;
+    margin: 0;
+}
+
+.repo-list {
+    display: flex;
+    align-items: center;
+    background: #E27BEB;
+    width: 300px;
+    height: 70px;
+    border: 1px solid black;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.repo-list-name {
+    margin: 0;
+}
+.repo-list-owner {
+    margin: 0;
+}
+.repo-list-stars {
+    margin: 0;
+}
+.repo-list-btn {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    color: red;
+}
