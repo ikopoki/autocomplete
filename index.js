@@ -29,11 +29,14 @@ class View {
     }
 
     createRepo (repoData) {
-        const repo = this.createElement('button', 'repo')
+        const repo = this.createElement('li', 'repo')
         repo.innerHTML = `<p class="repo-name">${repoData.name}</p>`
         repo.addEventListener('click', () => {
             this.searchInput.value = ''
             this.addRepo(repoData);
+            while (this.reposList.firstChild) {
+                this.reposList.removeChild(this.reposList.firstChild)
+            }
         });
         this.reposList.append(repo)
     }
@@ -62,15 +65,19 @@ class Search {
 
     async searchRepos() {
         const searchValue = this.view.searchInput.value
-        if (searchValue) {
-            const response = await fetch(`https://api.github.com/search/repositories?q=${searchValue}&per_page=5`);
-                if (response.ok) {
-                    const data = await response.json();
-                    data.items.forEach(repo => {
-                        this.view.createRepo(repo);
-                    });
-                    this.addRepo(data);
-                }
+        if (searchValue.trim() !== '') {
+            try {
+                const response = await fetch(`https://api.github.com/search/repositories?q=${searchValue}&per_page=5`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        data.items.forEach(repo => {
+                            this.view.createRepo(repo);
+                        });
+                        this.addRepo(data);
+                    }
+            } catch (error) {
+                console.error('Произошла ошибка', error.message)
+            }
         } else {
             this.clearSearch()
         }

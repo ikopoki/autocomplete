@@ -19,9 +19,16 @@ button {
 .repos {
     list-style-type: none;
     padding:0;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0;
+    margin: 0;
 }
 
 .repo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #E3E3E3;
     text-decoration: none;
     width: 300px;
